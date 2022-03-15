@@ -32,10 +32,10 @@ rmarkdown::find_pandoc(dir =  .libPaths())
 For the above setting, pandoc.exe needs to be in site-library
 
 
-# How to run apps in commandline in the target R enviroment
+# How to run apps in CMD in the target R enviroment
 
 
-## the port number, 
+## The port number, 
 
 The port number can be set like this:
 ```
@@ -70,3 +70,16 @@ D:\R-4.0.4\bin\R.exe -e "shiny::runApp('D:shiny_apps//01_hello')"
 ```
 you will see a bit difference between the above two ways. 
 
+
+# Save shiny apps as functions
+
+see more from [here](https://shiny.rstudio.com/articles/function.html)
+
+The point of run shiny apps as function is that you can pass parameters into shiny app
+In a distribution point of view, functions need to be compiled into packages, but apps can be copied and pasted to run direcctly
+There is a way of passing parameter to shiny apps by feeding the file with a fix name in a specified location 
+
+
+* Define a Shiny app in a single script with shinyApp
+* Save your app as a parameterized function
+* Launch your app from the command line or inside an interactive document
