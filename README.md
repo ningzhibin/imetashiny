@@ -19,14 +19,16 @@ It is going to share the same environment as the local static metalab report.
 * Copy all installed library (if you have installed any) under the installation folder, e.g. to a sub folder named site-library
 * This file /etc/Rprofile.site  is the one to configure each r version/enviroment. It is an R script actually (without .r as extention though) and is sourced every time you start the R. Add this line to the file.    
 
+```
 .libPaths(c(paste0(R.home(), "/site-library"),paste0(R.home(), "/library")))
+```
 
 It will set the site-library as the default (first) for new packges to install. 
 
 * In order to be able to use this "Green" R environment for R markdown, apart from installation of all rmarkdown related packages, rmarkdown needs to know where to find pandoc.exe. The easiest way is to set it like this in the script before the knit command: 
-
+```
 rmarkdown::find_pandoc(dir =  .libPaths())
-
+```
 For the above setting, pandoc.exe needs to be in site-library
 
 
@@ -36,32 +38,35 @@ For the above setting, pandoc.exe needs to be in site-library
 ## the port number, 
 
 The port number can be set like this:
-
+```
 options(shiny.port = 5010)
+```
 
 Either the port number can be set globally for all runs, by add the above line in the /etc/Rprofile.site, or can be set to a different number earch time if you want to run multiple instances.
 
 The following examples assume that the port has been set to 5010 globally
 
-## batch script
+## Batch script
 
 
 * put these in a r script and run the script, then run using R CMD BATCH, then open this  127.0.0.1:5010 in your brower
 * note that this can be implemented into java easily by the internet explore widget and run by cmd
 
-in test_run_app.r, there is only one line:
-
+In test_run_app.r, there is only one line:
+```
 shiny::runApp('d://shiny_apps/01_hello', launch.browser = TRUE)
+```
 
-them run this in CMD:
+then run this in CMD:
 
+```
 D:\R-4.0.4\bin\R.exe R CMD BATCH --no-save --no-restore D:\report_demo\Demo_shiny_CMD\test_run_app.r
+```
 
 
-
-## directly from command line
-
+## Direct run in CMD
+```
 D:\R-4.0.4\bin\R.exe -e "shiny::runApp('D:shiny_apps//01_hello')"
-
+```
 you will see a bit difference between the above two ways. 
 
